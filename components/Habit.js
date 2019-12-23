@@ -1,18 +1,27 @@
 import HabitButton from './HabitButton'
 
-const Habit = () => {
+const Habit = ({ habit }) => {
+  const dates = getLast5Days()
+  console.log(dates)
   return (
     <article>
-      <h3>Habit Title</h3>
+      <h3>{habit}</h3>
       <div>
-        <HabitButton>0</HabitButton>
-        <HabitButton>0</HabitButton>
-        <HabitButton>0</HabitButton>
-        <HabitButton>X</HabitButton>
-        <HabitButton>0</HabitButton>
+        {dates.map(date => (
+          <HabitButton key={date.getMilliseconds()} date={date} />
+        ))}
       </div>
     </article>
   )
+}
+
+const getLast5Days = () => {
+  const dates = '01234'.split('').map(day => {
+    const tempDate = new Date()
+    tempDate.setDate(tempDate.getDate() - day)
+    return tempDate
+  })
+  return dates
 }
 
 export default Habit
