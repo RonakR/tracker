@@ -5,8 +5,6 @@ const colors = ['#718096', '#f56565', '#f6e05e', '#68d391', '#63b3ed']
 const Habit = ({ habit, index }) => {
   const dates = getLast5Days()
 
-  console.log('index', colors[index])
-
   return (
     <article>
       <h3 style={{ borderColor: colors[index] }}>{habit}</h3>
